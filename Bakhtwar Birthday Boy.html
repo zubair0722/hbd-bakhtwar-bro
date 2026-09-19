@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VIP HBD Bakhtwar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-grad: linear-gradient(135deg, #000000, #1a1a1a, #0a0a0a);
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --gold-dark: #AA8000;
+            --text-main: #ffffff;
+            --text-muted: #cccccc;
+            --glass-bg: rgba(20, 20, 20, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.3);
+        }
+
+        /* Essential Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-grad);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* Premium Gold Glowing Orbs */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.4;
+            animation: floatOrb 12s infinite alternate ease-in-out;
+            z-index: 0;
+        }
+        .orb-1 { width: 300px; height: 300px; background: var(--gold-dark); top: -100px; left: -100px; }
+        .orb-2 { width: 250px; height: 250px; background: #333333; bottom: -50px; right: -50px; animation-delay: -5s; }
+        .orb-3 { width: 200px; height: 200px; background: rgba(212, 175, 55, 0.2); top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulseOrb 8s infinite alternate; }
+
+        @keyframes floatOrb { 0% { transform: translateY(0px) scale(1); } 100% { transform: translateY(40px) scale(1.1); } }
+        @keyframes pulseOrb { 0% { opacity: 0.2; transform: translate(-50%, -50%) scale(0.9); } 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.3); } }
+
+        /* Floating Brand Header */
+        .brand-header {
+            position: fixed; top: 25px; width: 100%; text-align: center;
+            font-size: 0.75rem; letter-spacing: 6px; font-weight: 700;
+            color: var(--gold-light); text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            z-index: 100;
+            opacity: 0.8;
+        }
+
+        .container { width: 100%; max-width: 420px; padding: 20px; text-align: center; z-index: 10; position: relative; }
+
+        /* Smooth Stage Transitions */
+        .stage { display: none; opacity: 0; transform: translateY(30px); }
+        .stage.active { 
+            display: block; 
+            animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
+        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+
+        /* --- STAGE 1: VIP BLACK & GOLD GIFT BOX --- */
+        .gift-wrapper {
+            margin: 60px auto 40px auto;
+            position: relative;
+            animation: floatBox 3.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+        @keyframes floatBox { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .pro-gift {
+            width: 140px; height: 130px; background: linear-gradient(135deg, #222, #0a0a0a);
+            margin: 0 auto; border-radius: 12px; position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 10px rgba(212, 175, 55, 0.2);
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+        .pro-gift:active { transform: scale(0.92); }
+        .pro-gift::before { /* Gold Ribbon Vertical */
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 25px; height: 100%; background: linear-gradient(to right, var(--gold-dark), var(--gold-primary), var(--gold-dark));
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .gift-lid-pro {
+            position: absolute; top: -15px; left: -10px; width: 160px; height: 40px;
+            background: linear-gradient(135deg, #333, #111); border-radius: 6px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6); z-index: 2; border: 1px solid #444;
+        }
+        .gift-lid-pro::after { /* Ribbon on Lid */
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 25px; height: 100%; background: linear-gradient(to right, var(--gold-dark), var(--gold-primary), var(--gold-dark));
+        }
+
+        .pulse-text { animation: pulseText 1.5s infinite alternate; font-weight: 400; letter-spacing: 2px; color: var(--gold-light); font-size: 0.9rem; }
+        @keyframes pulseText { from { opacity: 0.4; } to { opacity: 1; text-shadow: 0 0 10px var(--gold-primary); } }
+
+        /* --- STAGE 2: PREMIUM 3D CAKE --- */
+        .cake-container { margin: 50px auto; position: relative; width: 180px; height: 180px; cursor: pointer; }
+        .cake-container:active { transform: scale(0.95); }
+        .cake-layer {
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 160px; height: 70px; background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+            border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.8); border: 1px solid #333;
+        }
+        .cake-icing {
+            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+            width: 170px; height: 40px; background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark)); border-radius: 20px;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.4), 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        .candle {
+            position: absolute; bottom: 85px; left: 50%; transform: translateX(-50%);
+            width: 12px; height: 45px; background: linear-gradient(to right, #fff, #ddd);
+            border-radius: 3px; box-shadow: 0 5px 10px rgba(0,0,0,0.5); border: 1px solid #ccc;
+        }
+        .flame {
+            position: absolute; bottom: 135px; left: 50%; transform: translateX(-50%);
+            width: 16px; height: 26px; background: #ff9d00; border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 20px #ff9d00, 0 0 40px #ffea00;
+            animation: flicker 0.12s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.1) rotate(2deg); opacity: 0.8; }
+        }
+
+        .cake-container.cut { pointer-events: none; }
+        .cake-container.cut .flame { display: none; }
+        .cake-container.cut .cake-layer, .cake-container.cut .cake-icing, .cake-container.cut .candle {
+            animation: explodeOut 0.6s forwards cubic-bezier(0.1, 0.8, 0.1, 1);
+        }
+        @keyframes explodeOut {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            40% { transform: translateX(-50%) scale(1.2); opacity: 1; filter: brightness(1.5); }
+            100% { transform: translateX(-50%) scale(0); opacity: 0; filter: brightness(0); }
+        }
+
+        /* --- STAGE 3: LUXURY GLASS CARD --- */
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px; padding: 45px 25px; border: 1px solid var(--glass-border);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            position: relative; overflow: hidden;
+        }
+        
+        .avatar-container {
+            width: 140px; margin: 0 auto 20px auto; position: relative;
+        }
+        .card-img {
+            width: 100%; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--gold-primary); padding: 4px; background: #000;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-pro {
+            background: transparent; border: 1px solid var(--gold-primary);
+            color: var(--gold-primary); padding: 15px 30px; border-radius: 50px;
+            font-weight: 600; cursor: pointer; margin-top: 25px; width: 100%;
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
+            transition: all 0.3s ease; box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+        .btn-pro:active { background: var(--gold-primary); color: #000; box-shadow: 0 0 25px var(--gold-primary); transform: scale(0.96); }
+
+        /* --- MODAL PRO (MESSAGE) --- */
+        .modal {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
+            display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .modal.show { display: flex; opacity: 1; }
+        .modal-content {
+            background: #111; padding: 40px 25px; border-radius: 20px;
+            border: 1px solid var(--gold-dark); width: 100%; max-width: 450px; 
+            max-height: 85vh; overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.15);
+            transform: translateY(40px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal.show .modal-content { transform: translateY(0); }
+        
+        .modal-content h2 { font-family: 'Dancing Script', cursive; color: var(--gold-primary); font-size: 2.5rem; margin-bottom: 20px; }
+        .modal-content p { line-height: 1.8; font-size: 1rem; color: var(--text-muted); text-align: left; }
+        .modal-content b { color: var(--gold-light); font-weight: 600; }
+
+        .confetti-piece { position: absolute; pointer-events: none; z-index: 1500; animation: fallLinear forwards; }
+        @keyframes fallLinear { 
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animated Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <div class="brand-header">Exclusive Celebration</div>
+
+    <div class="container">
+        
+        <!-- STAGE 1: VIP GIFT -->
+        <div id="stage-gift" class="stage active">
+            <h2 style="font-weight: 300; letter-spacing: 5px; margin-bottom: 10px; font-size: 1.2rem; color: var(--text-muted);">HELLO,</h2>
+            <h1 style="font-weight: 700; font-size: 2.2rem; color: var(--gold-primary); letter-spacing: 2px; text-shadow: 0 0 20px rgba(212,175,55,0.4); margin-bottom: 30px;">BAKHTWAR BHAI! ✨</h1>
+            
+            <div class="gift-wrapper" onclick="nextStage('stage-gift', 'stage-cake')">
+                <div class="pro-gift">
+                    <div class="gift-lid-pro"></div>
+                </div>
+            </div>
+            <p class="pulse-text">Tap the VIP Box to Unbox</p>
+        </div>
+
+        <!-- STAGE 2: 3D CAKE -->
+        <div id="stage-cake" class="stage">
+            <h2 style="font-family: 'Dancing Script'; font-size: 3rem; color: var(--gold-primary); margin-bottom: 10px; text-shadow: 0 5px 15px rgba(212,175,55,0.3);">Make a Wish!</h2>
+            
+            <div class="cake-container" id="cakeWrap" onclick="cutCake()">
+                <div class="cake-layer"></div>
+                <div class="cake-icing"></div>
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+            
+            <p class="pulse-text" style="font-size: 1.1rem; margin-top: 10px;">TAP TO CUT THE CAKE! 🔪</p>
+        </div>
+
+        <!-- STAGE 3: GLASS CARD -->
+        <div id="stage-card" class="stage">
+            <div class="glass-card">
+                <div class="avatar-container">
+                    <img src="bakhtwar.jpg" alt="Birthday Boss" class="card-img" onerror="this.src='https://via.placeholder.com/150'">
+                </div>
+                <p style="font-size: 0.7rem; color: var(--gold-dark); font-weight: 700; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase;">A True Gentleman</p>
+                <h1 style="font-size: 2.6rem; font-weight: 700; margin-bottom: 5px; color: var(--text-main);">Happy Birthday</h1>
+                <h2 style="color: var(--gold-primary); font-size: 1.4rem; font-weight: 400; letter-spacing: 1px;">Chaudhary Bakhtwar 👑</h2>
+                <div style="width: 40px; height: 2px; background: var(--gold-primary); margin: 20px auto; box-shadow: 0 0 10px var(--gold-primary);"></div>
+                <p style="opacity: 0.6; font-size: 0.85rem; font-style: italic;">"20th September — A Legend was Born."</p>
+                <button class="btn-pro" onclick="showModal()">Read Secret Message ✉️</button>
+            </div>
+            <p style="margin-top: 25px; font-size: 0.65rem; opacity: 0.3; letter-spacing: 2px;">DEVELOPED FOR BROTHERHOOD</p>
+        </div>
+
+    </div>
+
+    <!-- MODAL (MESSAGE) -->
+    <div class="modal" id="msgModal">
+        <div class="modal-content">
+            <h2 style="text-align: center;">Happy Birthday Bhai! 👑</h2>
+            <p>
+                <b>Chaudhary Bakhtwar Bhai! 🎉</b><br><br>
+                Bhai, seriously bataun toh aap bohot hi kamal ke insaan hain. Aap se milna aur apke sath kaam karna mere liye ek behtareen experience raha. Kaam ke doran aapne kabhi boss wala attitude nahi dikhaya, hamesha ek bade bhai ki tarhan guide kiya hai mujhe. ❤️<br><br>
+                
+                Ghaltiyan ki maine, par aapne kabhi daanta nahi balkay hamesha pyar se samjhaya. Sach kahun toh <b>aap sirf boss nahi, mere bhai hain meri jaan!</b> 🫂💪<br><br>
+                
+                Bhai hone ke naate, bas ek baat yaad rakhna... <b>aap sirf huqum kiya karein mere dost</b>, apka bhai hamesha hazir hai apke liye! 😎🔥<br><br>
+                
+                Allah apko hamesha khush rakhe, apki har jayez khwahish poori kare aur aap hamesha aise hi muskurate rahein (Ameen). ✨<br><br>
+                
+                Aur haan, sabse zaroori baat... <b>Gift-wift ki umeed mat rakhna, mera pyar hi kafi hai!</b> 😂💸 (Chalein ab treat ka scene on karein jaldi!) 🍔🍹<br><br>
+                
+                <span style="color:var(--gold-primary); font-size: 1.1rem; display: block; margin-top: 20px; font-family: 'Dancing Script', cursive; font-size: 1.8rem;"><b>— Arslan Mughal</b></span>
+            </p>
+            <button class="btn-pro" onclick="closeModal()" style="margin-top: 25px;">Close ✖</button>
+        </div>
+    </div>
+
+    <script>
+        function nextStage(current, next) {
+            triggerProConfetti();
+            document.getElementById(current).classList.remove('active');
+            setTimeout(() => { document.getElementById(next).classList.add('active'); }, 200);
+        }
+
+        function cutCake() {
+            const cake = document.getElementById('cakeWrap');
+            if (cake.classList.contains('cut')) return; 
+            cake.classList.add('cut');
+            
+            triggerProConfetti(true); 
+            
+            setTimeout(() => { nextStage('stage-cake', 'stage-card'); }, 1000);
+        }
+
+        function showModal() { 
+            const modal = document.getElementById('msgModal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+        
+        function closeModal() { 
+            const modal = document.getElementById('msgModal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 400);
+        }
+
+        function triggerProConfetti(megaBlast = false) {
+            const emojis = ['✨', '🔥', '💸', '🎉', '🥂', '👑', '🫂', '🖤'];
+            const count = megaBlast ? 60 : 30; 
+            
+            for(let i=0; i<count; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti-piece';
+                
+                if(Math.random() > 0.4) {
+                    c.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    c.style.fontSize = Math.random() * 15 + 15 + 'px';
+                } else {
+                    c.style.width = Math.random() * 8 + 6 + 'px';
+                    c.style.height = c.style.width;
+                    c.style.backgroundColor = ['#D4AF37', '#F3E5AB', '#ffffff', '#AA8000'][Math.floor(Math.random() * 4)];
+                    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    c.style.boxShadow = '0 0 10px rgba(212, 175, 55, 0.5)';
+                }
+
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.top = '-5vh';
+                
+                const duration = Math.random() * 2.5 + 2 + 's';
+                c.style.animationDuration = duration;
+                c.style.animationDelay = Math.random() * 0.3 + 's';
+                
+                document.body.appendChild(c);
+                setTimeout(() => c.remove(), parseFloat(duration) * 1000 + 500);
+            }
+        }
+    </script>
+</body>
+</html>
